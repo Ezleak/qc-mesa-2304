@@ -8,7 +8,7 @@ jobs:
   build:
     strategy:
       matrix:
-        arch: [ "arm32", "aarch64", "x86_64", "i686" ]
+        arch: [ "aarch64" ]
       fail-fast: false
 
     name: "Build for ${{matrix.arch}}"
@@ -29,10 +29,10 @@ jobs:
           export ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk-bundle"
           envsubst <android-${{matrix.arch}} >build-crossfile
           meson setup "build-android" \
-            --prefix=/tmp/zink \
+            --prefix=/tmp/mesa \
             --cross-file "build-crossfile" \
             -Dplatforms=android \
-            -Dplatform-sdk-version=25 \
+            -Dplatform-sdk-version=26 \
             -Dandroid-stub=true \
             -Dllvm=disabled \
             -Dxlib-lease=disabled \
@@ -42,11 +42,11 @@ jobs:
             -Dopengl=true \
             -Dosmesa=true \
             -Dvulkan-drivers= \
-            -Dgallium-drivers=swrast,zink \
+            -Dgallium-drivers=zink,virgl \
             -Dshared-glapi=false
           ninja -C "build-android" install
       - name: Upload libraries
         uses: actions/upload-artifact@v2
         with:
-          name: libzink_${{matrix.arch}}
-          path: /tmp/zink
+          name: libOSMesa_${{matrix.arch}}
+          path: /tmp/mesa
