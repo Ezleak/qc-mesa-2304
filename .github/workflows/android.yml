@@ -29,7 +29,7 @@ jobs:
           export ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk-bundle"
           envsubst <android-${{matrix.arch}} >build-crossfile
           meson setup "build-android" \
-            --prefix=/tmp/zink \
+            --prefix=/tmp/mesa \
             --cross-file "build-crossfile" \
             -Dplatforms=android \
             -Dplatform-sdk-version=26 \
@@ -42,8 +42,8 @@ jobs:
             -Dopengl=true \
             -Dosmesa=true \
             -Dvulkan-drivers= \
-            -Dgallium-drivers=swrast,zink \
-            -Dshared-glapi=false
+            -Dgallium-drivers=zink,virgl \
+            -Dshared-glapi=disabled
           ninja -C "build-android" install
       - name: Upload libraries
         uses: actions/upload-artifact@v2
