@@ -41,7 +41,7 @@ jobs:
             -Dglx=disabled \
             -Dopengl=true \
             -Dosmesa=true \
-            -Dvulkan-drivers=virtio-experimental \
+            -Dvulkan-drivers=microsoft-experimental \
             -Dgallium-drivers=zink \
             -Dshared-glapi=disabled
           ninja -C "build-android" install
