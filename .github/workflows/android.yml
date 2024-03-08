@@ -41,7 +41,7 @@ jobs:
             -Dglx=disabled \
             -Dopengl=true \
             -Dosmesa=true \
-            -Dvulkan-drivers= \
+            -Dvulkan-drivers=swrast \
             -Dgallium-drivers=swrast \
             -Dbuildtype=release \
             -Dshared-glapi=disabled
