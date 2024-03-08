@@ -1756,7 +1756,7 @@ foreach d : _libdrm_checks
   endif
 endforeach
 
-with_gallium_drisw_kms = false
+with_gallium_drisw_kms = true
 dep_libdrm = dependency(
   'libdrm', version : '>=' + _drm_ver,
   # GNU/Hurd includes egl_dri2, without drm.
