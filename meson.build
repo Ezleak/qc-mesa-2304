@@ -1849,7 +1849,7 @@ endif
 
 dep_llvm = null_dep
 with_llvm = true
-if _llvm != 'disabled'
+if _llvm != 'enabled'
   dep_llvm = dependency(
     'llvm',
     version : _llvm_version,
