@@ -1848,7 +1848,7 @@ if meson.version().version_compare('< 0.54.0') and _shared_llvm
 endif
 
 dep_llvm = null_dep
-with_llvm = false
+with_llvm = true
 if _llvm != 'disabled'
   dep_llvm = dependency(
     'llvm',
